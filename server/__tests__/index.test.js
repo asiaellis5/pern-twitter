@@ -63,5 +63,27 @@ it("updates a from /tweets/:id", async (done) => {
       expect(response.statusCode).toBe(200);
       expect(response.body).toEqual("Tweet was updated");
     });
+
+  const updated = await request.get("/tweets").then((response) => {
+    expect(response.body[1].description).toEqual("new test tweet");
+  });
+  done();
+});
+
+it("deletes a tweets from /tweets/:id", async (done) => {
+  const tweets = await request.get("/tweets").then((response) => {
+    return response.body[0].tweet_id;
+  });
+  const res = await request
+    .delete(`/tweets/${tweets}`)
+
+    .then((response) => {
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toEqual("Tweet was deleted");
+    });
+
+  const deleted = await request.get("/tweets").then((response) => {
+    expect(response.body.length).toEqual(1);
+  });
   done();
 });

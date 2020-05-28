@@ -78,6 +78,20 @@ app.put("/tweets/:id", async (req, res) => {
 
 // delete a tweet
 
+app.delete("/tweets/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteTweet = await pool.query(
+      "DELETE FROM tweets WHERE tweet_id= $1",
+      [id]
+    );
+
+    res.json("Tweet was deleted");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`server has started on port ${port}`);
 });
