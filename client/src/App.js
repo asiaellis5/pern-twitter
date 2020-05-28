@@ -2,6 +2,6 @@ import React, { Fragment } from "react";
 import "./App.css";
 
 function App() {
-  return <Fragment></Fragment>;
+  return <div className="app-container"></div>;
 }
 export default App;
