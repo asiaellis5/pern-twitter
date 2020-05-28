@@ -3,10 +3,6 @@ const supertest = require("supertest");
 const request = supertest(app);
 const pool = require("./../test_db.js");
 
-// beforeAll(() => {
-//   process.env.NODE_ENV = "test";
-// });
-
 afterAll(() => {
   pool.query("TRUNCATE TABLE tweets;");
 });
@@ -83,7 +79,12 @@ it("deletes a tweets from /tweets/:id", async (done) => {
     });
 
   const deleted = await request.get("/tweets").then((response) => {
+    console.log(response.body);
     expect(response.body.length).toEqual(1);
+    expect(response.body).not.toContain({
+      tweet_id: `${tweets}`,
+      description: "test tweet",
+    });
   });
   done();
 });
