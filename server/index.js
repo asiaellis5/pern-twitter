@@ -26,8 +26,8 @@ app.post("/tweets", async (req, res) => {
     );
 
     res.json(newTweet.rows);
-  } catch (error) {
-    console.error(error.message);
+  } catch (err) {
+    console.error(err.message);
   }
 });
 
@@ -38,8 +38,8 @@ app.get("/tweets", async (req, res) => {
     const allTweets = await pool.query("SELECT * FROM tweets;");
 
     res.json(allTweets.rows);
-  } catch (error) {
-    console.error(error.message);
+  } catch (err) {
+    console.error(err.message);
   }
 });
 
@@ -48,13 +48,13 @@ app.get("/tweets", async (req, res) => {
 app.get("/tweets/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
+    const tweet = await pool.query("SELECT * FROM tweets WHERE tweet_id = $1", [
       id,
     ]);
 
-    res.json(todo.rows[0]);
-  } catch (error) {
-    console.error(error.messsage);
+    res.json(tweet.rows[0]);
+  } catch (err) {
+    console.error(err.messsage);
   }
 });
 
@@ -65,8 +65,8 @@ app.put("/tweets/:id", async (req, res) => {
     const { id } = req.params;
     const { description } = req.body;
 
-    const updateTodo = await pool.query(
-      "UPDATE todo SET description = $1 WHERE todo_id = $2",
+    const updateTweet = await pool.query(
+      "UPDATE tweets SET description = $1 WHERE tweet_id = $2",
       [description, id]
     );
 
