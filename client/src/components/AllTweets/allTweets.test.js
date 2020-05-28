@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import AllTweets from "./allTweets";
+import AddTweet from "./../AddTweet/addTweet";
 
 describe("AllTweets", () => {
   let wrapper;
@@ -13,5 +14,9 @@ describe("AllTweets", () => {
 
   it("should render a <h1 />", () => {
     expect(wrapper.find("h1").length).toEqual(1);
+  });
+
+  it("should render the AddTweet Component", () => {
+    expect(wrapper.containsMatchingElement(<AddTweet />)).toEqual(true);
   });
 });
