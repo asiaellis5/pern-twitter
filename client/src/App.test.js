@@ -14,7 +14,7 @@ describe("App", () => {
     expect(wrapper.find("div").length).toEqual(1);
   });
 
-  it("should render the LogInPage Component", () => {
-    expect(wrapper.containsMatchingElement(<LogInPage />)).toEqual(true);
-  });
+  // it("should render the LogInPage Component", () => {
+  //   expect(wrapper.containsMatchingElement(<LogInPage />)).toEqual(true);
+  // });
 });
