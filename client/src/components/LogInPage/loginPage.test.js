@@ -17,6 +17,10 @@ describe("LogInPage", () => {
     expect(wrapper.find("form").length).toEqual(1);
   });
 
+  it("should render a <button />", () => {
+    expect(wrapper.find("button").length).toEqual(1);
+  });
+
   it("should render a <h1 />", () => {
     expect(wrapper.find("h1").length).toEqual(1);
   });
