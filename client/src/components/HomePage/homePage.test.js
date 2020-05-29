@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, render } from "enzyme";
 import HomePage from "./homePage";
 import AddTweet from "./../AddTweet/addTweet";
 import AllTweets from "./../AllTweets/allTweets";
