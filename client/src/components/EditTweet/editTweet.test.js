@@ -5,13 +5,18 @@ import EditTweet from "./editTweet";
 describe("EditTweet", () => {
   let wrapper;
 
-  beforeEach(() => (wrapper = shallow(<EditTweet />)));
+  beforeEach(
+    () =>
+      (wrapper = shallow(
+        <EditTweet tweet={{ tweet_id: 1, description: "Tweet" }} />
+      ))
+  );
 
-  it("should render a <div />", () => {
-    expect(wrapper.find("div").length).toEqual(1);
+  it("should render a <button />", () => {
+    expect(wrapper.find("button").length).toEqual(4);
   });
 
-  it("should render a <h1 />", () => {
-    expect(wrapper.find("h1").length).toEqual(1);
+  it("should render a <div />", () => {
+    expect(wrapper.find("div").length).toEqual(7);
   });
 });

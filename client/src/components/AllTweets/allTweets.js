@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import EditTweet from "./../EditTweet/editTweet";
 
 const AllTweets = () => {
   const [tweets, setTweets] = useState([]);
@@ -33,15 +34,18 @@ const AllTweets = () => {
         <h1>Tweets</h1>
       </center>
       {tweets.map((tweet) => (
-        <div className="card bg-light text-dark mb-2" key={tweet.tweet_id}>
-          <div className="card-body text-center">{tweet.description}</div>
-          <button className="btn btn-warning btn-small">Update</button>
-          <button
-            className="btn btn-danger"
-            onClick={() => deleteTweet(tweet.tweet_id)}
-          >
-            Delete
-          </button>
+        <div className="card" key={tweet.tweet_id}>
+          <div className="card-body">
+            <h4 className="card-title">Tweet Number {tweet.tweet_id}</h4>
+            <p className="card-text">{tweet.description}</p>
+            <EditTweet tweet={tweet} />
+            <button
+              className="btn btn-danger m-1"
+              onClick={() => deleteTweet(tweet.tweet_id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>
