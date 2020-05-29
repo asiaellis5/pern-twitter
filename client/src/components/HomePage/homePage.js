@@ -4,9 +4,9 @@ import AllTweets from "./../AllTweets/allTweets";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Twitter</h1>
+    <div id="homepage-container">
       <AddTweet />
+      <br></br>
       <AllTweets />
     </div>
   );
