@@ -36,8 +36,8 @@ const AllTweets = () => {
       {tweets.map((tweet) => (
         <div className="card" key={tweet.tweet_id}>
           <div className="card-body">
-            <h4 className="card-title">Tweet Number {tweet.tweet_id}</h4>
-            <p className="card-text">{tweet.description}</p>
+            <h4 className="card-title">{tweet.description}</h4>
+            <p className="card-text">{}</p>
             <EditTweet tweet={tweet} />
             <button
               className="btn btn-danger m-1"

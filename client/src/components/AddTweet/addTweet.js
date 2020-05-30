@@ -29,7 +29,7 @@ const AddTweet = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="btn btn-success">Tweet</button>
+        <button className="btn btn-primary">Tweet</button>
       </form>
     </div>
   );
