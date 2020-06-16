@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import PrimaryPage from "./primaryPage";
 
-describe("LogInPage", () => {
+describe("PrimaryPage", () => {
   let wrapper;
 
   beforeEach(() => (wrapper = shallow(<PrimaryPage />)));
