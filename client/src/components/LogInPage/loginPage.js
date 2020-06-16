@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useImperativeHandle } from "react";
+import { Link } from "react-router-dom";
 
 const LogInPage = () => {
   return (
@@ -7,7 +8,9 @@ const LogInPage = () => {
       <form className="d-flex mt-5">
         <input type="text" className="form-control" value={"email"} />
         <input type="text" className="form-control" value={"password"} />
-        <button className="btn btn-success">Log in</button>
+        <Link to="/">
+          <button className="btn btn-success">Log in</button>
+        </Link>
       </form>
     </div>
   );
