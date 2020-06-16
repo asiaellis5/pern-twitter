@@ -8,10 +8,10 @@ const PrimaryPage = () => {
       <h1>Welcome to Chitter</h1>
       <p>Please select log in or sign up to proceed</p>
       <Link to="/login">
-        <button className="btn btn-success m-3">Log in</button>
+        <button className="btn btn-outline-success m-3">Log in</button>
       </Link>
       <Link to="/signup">
-        <button className="btn btn-success m-3">Sign Up</button>
+        <button className="btn btn-outline-success m-3">Sign Up</button>
       </Link>
     </div>
   );
