@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import auth from './../../auth'
 
-const AddTweet = () => {
+const AddTweet = (props) => {
   const [description, setDescription] = useState("");
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ const AddTweet = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      window.location = "/";
+      window.location = "/home";
     } catch (error) {
       console.error(error.message);
     }
@@ -29,7 +30,15 @@ const AddTweet = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="btn btn-primary">Tweet</button>
+        {/* <button className="btn btn-primary">Tweet</button> */}
+        <button
+          onClick={() => {
+            auth.signIn(() => {
+              props.history.push("/home");
+            });
+          }}
+          className="btn btn-success"
+        >Tweet</button>
       </form>
     </div>
   );

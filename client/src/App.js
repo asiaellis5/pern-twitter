@@ -5,6 +5,7 @@ import LogInPage from "./components/LogInPage/loginPage";
 import HomePage from "./components/HomePage/homePage";
 import PrimaryPage from "./components/PrimaryPage/primaryPage";
 import SignUpPage from "./components/SignUpPage/signUpPage";
+import PrivateRoute from './private-route'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" component={PrimaryPage} exact />
         <Route path="/login" component={LogInPage} exact />
         <Route path="/signup" component={SignUpPage} exact />
-        <Route path="/home" component={HomePage} exact />
+        <PrivateRoute path="/home" component={HomePage} exact />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>
