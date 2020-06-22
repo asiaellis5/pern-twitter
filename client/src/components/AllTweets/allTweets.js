@@ -33,7 +33,7 @@ const AllTweets = () => {
       <center>
         <h1>Tweets</h1>
       </center>
-      {tweets.map((tweet) => (
+      {tweets.reverse().map((tweet) => (
         <div className="card" key={tweet.tweet_id}>
           <div className="card-body">
             <h4 className="card-title">{tweet.description}</h4>
