@@ -92,6 +92,49 @@ app.delete("/tweets/:id", async (req, res) => {
   }
 });
 
+// USERS
+
+app.get("/users", async (req, res) => {
+  try {
+    const allUsers = await pool.query("SELECT * FROM Users");
+    res.json(allUsers.rows);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
+app.get("/users/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tweet = await pool.query("SELECT * FROM Users WHERE user_id = $1", [
+      id,
+    ]);
+
+    res.json(tweet.rows[0]);
+  } catch (err) {
+    console.error(err.messsage);
+  }
+});
+
+
+
+app.post("/users", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const { username } = req.body;
+    const { password } = req.body;
+    const newUser = await pool.query(
+      "INSERT INTO Users (email, username, password) VALUES($1,$2,$3) RETURNING *",
+      [email, username, password]
+    );
+    res.json(newUser.rows);
+  } catch (err) {
+    console.erroro(err);
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`server has started on port ${port}`);
 });
