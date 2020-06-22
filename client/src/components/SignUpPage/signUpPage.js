@@ -8,6 +8,7 @@ const SignUpPage = (props) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+
     try {
       const body = { email: email, username: username, password: password };
       const response = await fetch("http://localhost:5000/users", {
@@ -50,11 +51,7 @@ const SignUpPage = (props) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button className="btn btn-success" onClick={() => {
-          auth.signIn(() => {
-            props.history.push("/home");
-          });
-        }}>Sign up</button>
+        <button className="btn btn-success" >Sign up</button>
       </form>
     </div>
   );

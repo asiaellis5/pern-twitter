@@ -12,10 +12,10 @@ const AddTweet = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      window.location = "/home";
     } catch (error) {
       console.error(error.message);
     }
+    setDescription("")
   };
   return (
     <div className="addTweet-Container">
@@ -32,11 +32,7 @@ const AddTweet = (props) => {
         />
         {/* <button className="btn btn-primary">Tweet</button> */}
         <button
-          onClick={() => {
-            auth.signIn(() => {
-              props.history.push("/home");
-            });
-          }}
+
           className="btn btn-success"
         >Tweet</button>
       </form>

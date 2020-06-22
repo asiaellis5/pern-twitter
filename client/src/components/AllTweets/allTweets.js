@@ -26,7 +26,7 @@ const AllTweets = () => {
 
   useEffect(() => {
     getTweets();
-  }, []);
+  }, [tweets]);
 
   return (
     <div className="all-tweets-container">
