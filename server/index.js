@@ -130,7 +130,24 @@ app.post("/users", async (req, res) => {
     );
     res.json(newUser.rows);
   } catch (err) {
-    console.erroro(err);
+    console.error(err);
+  }
+});
+
+app.post("/users/:username", async (req, res) => {
+  try {
+    const { username } = req.params
+    const user = await pool.query("SELECT * FROM Users WHERE username = $1", [
+      username,
+    ]);
+    const { password } = req.body
+    if (password === user.rows[0].password) {
+      console.log(user.rows[0])
+    } else {
+      console.log(false)
+    }
+  } catch (err) {
+    console.error(err);
   }
 });
 
