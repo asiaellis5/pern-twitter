@@ -38,10 +38,10 @@ const LogInPage = (props) => {
       {error &&
         <Alert variant={"danger"}>
           Invalid username or password, please check and try again
-  </Alert>}
+      </Alert>}
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input type="text" className="form-control" placeholder="Username" onChange={(event) => setUsername(event.target.value)} />
-        <input type="text" className="form-control" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
+        <input type="text" className="form-control" placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} />
         <button
           className="btn btn-success"
         >
