@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import auth from './../../auth'
+import Alert from 'react-bootstrap/Alert'
 // import Alert from 
 
 const LogInPage = (props) => {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -17,18 +18,27 @@ const LogInPage = (props) => {
         body: JSON.stringify(body),
       });
 
-      // window.location = "/home";
+      let authenticate = await response.json().then((data) => data);
+      if (authenticate === true) {
+        auth.signIn(() => {
+          props.history.push("/home");
+        });
+      } else {
+        setError(true)
+      }
     } catch (error) {
       console.error(error.message);
     }
-    auth.signIn(() => {
-      props.history.push("/home");
-    });
+
   }
 
   return (
     <div className="login-container">
       <h1 className="text-center mt-5">Log in</h1>
+      {error &&
+        <Alert variant={"danger"}>
+          Invalid username or password, please check and try again
+  </Alert>}
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input type="text" className="form-control" placeholder="Username" onChange={(event) => setUsername(event.target.value)} />
         <input type="text" className="form-control" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
