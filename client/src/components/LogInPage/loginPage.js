@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import auth from './../../auth'
 import Alert from 'react-bootstrap/Alert'
-// import Alert from 
 
 const LogInPage = (props) => {
   const [username, setUsername] = useState("");

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import auth from './../../auth'
+import Alert from 'react-bootstrap/Alert'
 
 const SignUpPage = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -16,18 +18,30 @@ const SignUpPage = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      let authenticate = await response.json().then((data) => data);
+      if (authenticate === "Failed") {
+        setError(true)
+      } else {
+        auth.signIn(() => {
+
+          props.history.push("/home");
+        });
+      }
     } catch (error) {
       console.error(error.message);
+
     }
-    auth.signIn(() => {
-      props.history.push("/home");
-    });
+
   };
 
 
   return (
     <div className="login-container">
       <h1 className="text-center mt-5">Sign Up</h1>
+      {error &&
+        <Alert variant={"danger"}>
+          That username or email already has an account
+      </Alert>}
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           className="form-control"
