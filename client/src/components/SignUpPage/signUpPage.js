@@ -23,7 +23,6 @@ const SignUpPage = (props) => {
         setError(true)
       } else {
         auth.signIn(() => {
-
           props.history.push("/home");
         });
       }

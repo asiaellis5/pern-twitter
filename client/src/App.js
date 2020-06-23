@@ -6,10 +6,12 @@ import HomePage from "./components/HomePage/homePage";
 import PrimaryPage from "./components/PrimaryPage/primaryPage";
 import SignUpPage from "./components/SignUpPage/signUpPage";
 import PrivateRoute from './private-route'
+import Navigation from "./components/Navigation/navigation";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navigation />
       <Switch>
         <Route path="/" component={PrimaryPage} exact />
         <Route path="/login" component={LogInPage} exact />
