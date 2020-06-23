@@ -16,8 +16,6 @@ const SignUpPage = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
-      // window.location = "/home";
     } catch (error) {
       console.error(error.message);
     }

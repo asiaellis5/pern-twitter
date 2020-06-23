@@ -18,7 +18,7 @@ const AllTweets = () => {
     try {
       const response = await fetch("http://localhost:5000/tweets");
       const jsonData = await response.json();
-      setTweets(jsonData);
+      setTweets(jsonData.reverse());
     } catch (error) {
       console.error(error.message);
     }

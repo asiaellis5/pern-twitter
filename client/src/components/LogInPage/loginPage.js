@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import auth from './../../auth'
+// import Alert from 
 
 const LogInPage = (props) => {
   const [email, setEmail] = useState("");
