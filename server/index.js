@@ -142,7 +142,7 @@ app.post("/users/:username", async (req, res) => {
     ]);
     const { password } = req.body
     if (password === user.rows[0].password) {
-      console.log(user.rows[0])
+      res.json(user.rows[0])
     } else {
       console.log(false)
     }

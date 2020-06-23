@@ -8,9 +8,7 @@ const SignUpPage = (props) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    auth.signIn(() => {
-      props.history.push("/home");
-    });
+
     try {
       const body = { email: email, username: username, password: password };
       const response = await fetch("http://localhost:5000/users", {
@@ -18,10 +16,14 @@ const SignUpPage = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
       // window.location = "/home";
     } catch (error) {
       console.error(error.message);
     }
+    auth.signIn(() => {
+      props.history.push("/home");
+    });
   };
 
 
