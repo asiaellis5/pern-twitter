@@ -9,13 +9,19 @@ import PrivateRoute from './private-route'
 import Navigation from "./components/Navigation/navigation";
 
 function App() {
+  const [auth, setAuth] = useState(false)
+
   return (
     <BrowserRouter>
-      <Navigation />
+      <Navigation auth={auth} />
       <Switch>
         <Route path="/" component={PrimaryPage} exact />
-        <Route path="/login" component={LogInPage} exact />
-        <Route path="/signup" component={SignUpPage} exact />
+        <Route path="/login" render={(props) => (
+          <LogInPage {...props} auth={setAuth} />
+        )} exact />
+        <Route path="/signup" render={(props) => (
+          <SignUpPage {...props} auth={setAuth} />
+        )} exact />
         <PrivateRoute path="/home" component={HomePage} exact />
         <Route component={Error} />
       </Switch>

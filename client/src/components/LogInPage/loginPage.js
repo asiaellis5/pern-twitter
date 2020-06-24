@@ -20,8 +20,9 @@ const LogInPage = (props) => {
       let authenticate = await response.json().then((data) => data);
       if (authenticate === true) {
         auth.signIn(() => {
-          props.history.push("/home");
+          props.history.push("/home")
         });
+        props.auth(true)
       } else {
         setError(true)
       }

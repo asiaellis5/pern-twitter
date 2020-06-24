@@ -1,12 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
-const Navigation = () => {
+const Navigation = (props) => {
+  console.log("navbaarrr", props.auth)
   return (
     <Fragment>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a className="navbar-brand" href="/home">
-            Twitter
+            Chitter
           </a>
           <button
             className="navbar-toggler"
@@ -21,14 +22,15 @@ const Navigation = () => {
           </button>
           <div className="navbar-collapse collapse">
           </div>
-
-          <ul className="nav navbar-nav navbar-right">
-            <li className="nav-item active">
-              <a className="nav-link" href="/sign_out">
-                Sign Out
-              </a>
-            </li>
-          </ul>
+          {props.auth &&
+            <ul className="nav navbar-nav navbar-right">
+              <li className="nav-item active">
+                <a className="nav-link" href="/">
+                  Sign Out
+      </a>
+              </li>
+            </ul>
+          }
         </nav>
       </div>
     </Fragment>
