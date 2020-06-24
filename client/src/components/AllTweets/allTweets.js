@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EditTweet from "./../EditTweet/editTweet";
 
-const AllTweets = () => {
+const AllTweets = (props) => {
   const [tweets, setTweets] = useState([]);
 
   const deleteTweet = async (id) => {
@@ -36,6 +36,7 @@ const AllTweets = () => {
       {tweets.reverse().map((tweet) => (
         <div className="card" key={tweet.tweet_id}>
           <div className="card-body">
+            <h4 className="card-title">{props.username}</h4>
             <h4 className="card-title">{tweet.description}</h4>
             <p className="card-text">{}</p>
             <EditTweet tweet={tweet} />

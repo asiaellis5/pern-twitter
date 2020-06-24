@@ -8,7 +8,7 @@ const HomePage = (props) => {
     <div id="homepage-container">
       <AddTweet />
       <br></br>
-      <AllTweets />
+      <AllTweets username={props.username} />
     </div>
   );
 };
