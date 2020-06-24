@@ -26,6 +26,7 @@ const SignUpPage = (props) => {
           props.history.push("/home");
         });
         props.auth(true)
+        props.username(username)
       }
     } catch (error) {
       console.error(error.message);
