@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation/navigation";
 
 function App() {
   const [auth, setAuth] = useState(false)
+  const [username, setUsername] = useState("")
 
   return (
     <BrowserRouter>
@@ -17,10 +18,10 @@ function App() {
       <Switch>
         <Route path="/" component={PrimaryPage} exact />
         <Route path="/login" render={(props) => (
-          <LogInPage {...props} auth={setAuth} />
+          <LogInPage {...props} auth={setAuth} username={setUsername} />
         )} exact />
         <Route path="/signup" render={(props) => (
-          <SignUpPage {...props} auth={setAuth} />
+          <SignUpPage {...props} auth={setAuth} username={setUsername} />
         )} exact />
         <PrivateRoute path="/home" component={HomePage} exact />
         <Route component={Error} />

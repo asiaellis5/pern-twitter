@@ -2,7 +2,8 @@ import React from "react";
 import AddTweet from "./../AddTweet/addTweet";
 import AllTweets from "./../AllTweets/allTweets";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  console.log("homeeee", props.username)
   return (
     <div id="homepage-container">
       <AddTweet />

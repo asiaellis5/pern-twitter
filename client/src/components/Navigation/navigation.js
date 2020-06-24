@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 
 const Navigation = (props) => {
-  console.log("navbaarrr", props.auth)
+  console.log("navbaarrr", props.username)
   return (
     <Fragment>
       <div>

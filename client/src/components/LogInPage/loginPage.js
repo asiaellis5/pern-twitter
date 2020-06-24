@@ -23,6 +23,7 @@ const LogInPage = (props) => {
           props.history.push("/home")
         });
         props.auth(true)
+        props.username(username)
       } else {
         setError(true)
       }
