@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
-const EditTweet = ({ tweet }) => {
-  const [description, setDescription] = useState(tweet.description);
+const EditTweet = (props) => {
+  const [description, setDescription] = useState(props.tweet.description);
 
   const updateDescription = async (e) => {
     e.preventDefault();
     try {
       const body = { description };
       const response = await fetch(
-        `http://localhost:5000/tweets/${tweet.tweet_id}`,
+        `http://localhost:5000/tweets/${props.tweet.tweet_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         }
       );
+      props.setRender(true)
       // window.location = "/";
     } catch (error) {
       console.error(error.message);
@@ -26,15 +27,15 @@ const EditTweet = ({ tweet }) => {
         type="button"
         className="btn btn-warning"
         data-toggle="modal"
-        data-target={`#id${tweet.tweet_id}`}
+        data-target={`#id${props.tweet.tweet_id}`}
       >
         Edit
       </button>
 
       <div
         className="modal"
-        id={`id${tweet.tweet_id}`}
-        onClick={() => setDescription(tweet.description)}
+        id={`id${props.tweet.tweet_id}`}
+        onClick={() => setDescription(props.tweet.description)}
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -44,7 +45,7 @@ const EditTweet = ({ tweet }) => {
                 type="button"
                 className="close"
                 data-dismiss="modal"
-                onClick={() => setDescription(tweet.description)}
+                onClick={() => setDescription(props.tweet.description)}
               >
                 &times;
               </button>
@@ -72,7 +73,7 @@ const EditTweet = ({ tweet }) => {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
-                onClick={() => setDescription(tweet.description)}
+                onClick={() => setDescription(props.tweet.description)}
               >
                 Close
               </button>

@@ -9,8 +9,6 @@ const AddTweet = (props) => {
     return props.users.filter(user => user.username === props.username)[0].user_id
   }
 
-  console.log("addddd", getUserId())
-
 
 
   const onSubmitForm = async (e) => {
