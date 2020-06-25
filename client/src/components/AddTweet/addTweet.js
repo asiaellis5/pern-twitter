@@ -1,22 +1,36 @@
 import React, { useState } from "react";
-import auth from './../../auth'
+
 
 const AddTweet = (props) => {
   const [description, setDescription] = useState("");
+  const [userId, setUserId] = useState("")
+
+  const getUserId = () => {
+    return props.users.filter(user => user.username === props.username)[0].user_id
+  }
+
+  console.log("addddd", getUserId())
+
+
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch("http://localhost:5000/tweets", {
+      const response = await fetch(`http://localhost:5000/tweets/${getUserId()}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      props.setRender(true)
+
     } catch (error) {
       console.error(error.message);
     }
     setDescription("")
   };
+
+
   return (
     <div className="addTweet-Container">
       <center>
@@ -30,7 +44,6 @@ const AddTweet = (props) => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        {/* <button className="btn btn-primary">Tweet</button> */}
         <button
 
           className="btn btn-success"

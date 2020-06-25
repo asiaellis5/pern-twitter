@@ -23,7 +23,7 @@ function App() {
         <Route path="/signup" render={(props) => (
           <SignUpPage {...props} auth={setAuth} username={setUsername} />
         )} exact />
-        <PrivateRoute path="/home" component={HomePage} username={username} exact />
+        <PrivateRoute path="/home" component={HomePage} username={username} auth={auth} setAuth={setAuth} exact />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>

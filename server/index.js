@@ -17,12 +17,13 @@ app.use(express.json());
 
 // create a tweet
 
-app.post("/tweets", async (req, res) => {
+app.post("/tweets/:id", async (req, res) => {
   try {
     const { description } = req.body;
+    const { id } = req.params;
     const newTweet = await pool.query(
-      "INSERT INTO tweets (description) VALUES ($1) RETURNING * ",
-      [description]
+      "INSERT INTO tweets (description, user_fk_id) VALUES ($1, $2) RETURNING * ",
+      [description, id]
     );
 
     res.json(newTweet.rows);
@@ -33,7 +34,7 @@ app.post("/tweets", async (req, res) => {
 
 // get tweets
 
-app.get("/tweets", async (req, res) => {
+app.get("/tweets/", async (req, res) => {
   try {
     const allTweets = await pool.query("SELECT * FROM tweets;");
 
@@ -128,9 +129,10 @@ app.post("/users", async (req, res) => {
       "INSERT INTO Users (email, username, password) VALUES($1,$2,$3) RETURNING *",
       [email, username, password]
     );
-    res.json(newUser.rows);
+    res.json(newUser.rows[0]);
   } catch (err) {
     console.error(err);
+    res.json("Failed")
   }
 });
 
@@ -141,10 +143,15 @@ app.post("/users/:username", async (req, res) => {
       username,
     ]);
     const { password } = req.body
-    if (password === user.rows[0].password) {
-      res.json(user.rows[0])
+    if (user.rows[0]) {
+      let auth = user.rows[0].password === password;
+      if (auth) {
+        res.json(auth);
+      } else {
+        res.json("Failed");
+      }
     } else {
-      console.log(false)
+      res.json("Failed");
     }
   } catch (err) {
     console.error(err);
