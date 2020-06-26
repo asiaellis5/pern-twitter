@@ -32,19 +32,19 @@ const AddTweet = (props) => {
     <div className="addTweet-Container">
       <center>
         <h1>Add Tweet</h1>
-
+        <br></br>
         <form className="d-flex" onSubmit={onSubmitForm}>
           <input
             type="text"
             id="add-tweet"
-            className="form"
+            className="form w-50"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
           <button
 
             className="btn btn-success"
-          >Tweet</button>
+          >Add Tweet</button>
         </form>
       </center>
     </div>
