@@ -34,31 +34,35 @@ const AllTweets = (props) => {
   }, [props.render]);
 
   return (
-    <div className="all-tweets-container">
+    <div>
       <center>
-        <h1>Tweets</h1>
-      </center>
-      {tweets.reverse().map((tweet) => (
-        <div className="card" key={tweet.tweet_id}>
-          <div className="card-body">
-            <h4 className="card-title">{
-              props.users.filter(
-                (user) => user.user_id === tweet.user_fk_id
-              )[0].username
-            }</h4>
-            <h4 className="card-title">{tweet.description}</h4>
-            <p className="card-text">{}</p>
-            <EditTweet tweet={tweet} setRender={props.setRender} />
-            <button
-              className="btn btn-danger m-1"
-              onClick={() => deleteTweet(tweet.tweet_id)}
-            >
-              Delete
+        <div className="all-tweets-container">
+
+          <h1>Tweets</h1>
+
+          {tweets.reverse().map((tweet) => (
+            <div className="card" key={tweet.tweet_id}>
+              <div className="card-body">
+                <h4 className="card-title">@{
+                  props.users.filter(
+                    (user) => user.user_id === tweet.user_fk_id
+                  )[0].username
+                }</h4>
+                <h4 className="card-title">{tweet.description}</h4>
+                <p className="card-text">{}</p>
+                <EditTweet tweet={tweet} setRender={props.setRender} />
+                <button
+                  className="btn btn-danger m-1"
+                  onClick={() => deleteTweet(tweet.tweet_id)}
+                >
+                  Delete
             </button>
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </center>
+    </div >
   );
 };
 

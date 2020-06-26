@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const AddTweet = (props) => {
   const [description, setDescription] = useState("");
-  const [userId, setUserId] = useState("")
 
   const getUserId = () => {
     return props.users.filter(user => user.username === props.username)[0].user_id
@@ -33,20 +32,21 @@ const AddTweet = (props) => {
     <div className="addTweet-Container">
       <center>
         <h1>Add Tweet</h1>
-      </center>
-      <form className="d-flex" onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          id="add-tweet"
-          className="form-control"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button
 
-          className="btn btn-success"
-        >Tweet</button>
-      </form>
+        <form className="d-flex" onSubmit={onSubmitForm}>
+          <input
+            type="text"
+            id="add-tweet"
+            className="form-control"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <button
+
+            className="btn btn-success"
+          >Tweet</button>
+        </form>
+      </center>
     </div>
   );
 };

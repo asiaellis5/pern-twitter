@@ -5,6 +5,7 @@ import AllTweets from "./../AllTweets/allTweets";
 const HomePage = (props) => {
   const [users, setUsers] = useState("")
   const [render, setRender] = useState(false)
+
   const getUsers = async () => {
     try {
       const response = await fetch("http://localhost:5000/users");

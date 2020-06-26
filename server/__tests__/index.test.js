@@ -18,7 +18,6 @@ describe("posts", () => {
   });
 
   it("posts to /tweets/1", async (done) => {
-
     const res = await request
       .post("/tweets/1")
       .send({ description: "test tweet" })

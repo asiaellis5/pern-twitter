@@ -22,7 +22,7 @@ const EditTweet = (props) => {
     }
   };
   return (
-    <div className="all-tweets-container">
+    <div className="edit-container">
       <button
         type="button"
         className="btn btn-warning"
