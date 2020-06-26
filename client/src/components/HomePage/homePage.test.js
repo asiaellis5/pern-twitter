@@ -13,11 +13,5 @@ describe("HomePage", () => {
     expect(wrapper.find("div").length).toEqual(1);
   });
 
-  it("should render the AddTweet Component", () => {
-    expect(wrapper.containsMatchingElement(<AddTweet />)).toEqual(true);
-  });
 
-  it("should render the AllTweets Component", () => {
-    expect(wrapper.containsMatchingElement(<AllTweets />)).toEqual(true);
-  });
 });
