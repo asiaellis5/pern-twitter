@@ -44,7 +44,7 @@ const AddTweet = (props) => {
           />
           <button
 
-            className="btn btn-success"
+            className="btn btn-outline-success"
           >Add Tweet</button>
         </form>
       </center>
