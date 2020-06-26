@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import auth from './../../auth'
 import Alert from 'react-bootstrap/Alert'
+import { Link } from "react-router-dom";
 
 const SignUpPage = (props) => {
   const [email, setEmail] = useState("");
@@ -45,7 +46,7 @@ const SignUpPage = (props) => {
       </Alert>}
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
-          className="form-control"
+          className="form"
           type="text"
           required
           placeholder="Enter a Username"
@@ -53,7 +54,7 @@ const SignUpPage = (props) => {
           onChange={(event) => setUsername(event.target.value)}
         />
         <input
-          className="form-control"
+          className="form"
           type="email"
           required
           placeholder="Enter a Valid Email Address"
@@ -61,7 +62,7 @@ const SignUpPage = (props) => {
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
-          className="form-control"
+          className="form"
           type="password"
           required
           placeholder="Enter a Secure Password"
@@ -70,6 +71,11 @@ const SignUpPage = (props) => {
         />
         <button className="btn btn-success" >Sign up</button>
       </form>
+      <center>
+        <Link to="/login">
+          <button className="btn btn-outline-success m-3">Already have an account, click here to log in</button>
+        </Link>
+      </center>
     </div>
   );
 };
