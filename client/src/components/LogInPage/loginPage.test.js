@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import LogInPage from "./loginPage";
+import Alert from 'react-bootstrap/Alert'
 
 describe("LogInPage", () => {
   let wrapper;

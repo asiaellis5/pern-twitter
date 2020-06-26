@@ -1,8 +1,6 @@
 import React from "react";
 import { shallow, render } from "enzyme";
 import HomePage from "./homePage";
-import AddTweet from "./../AddTweet/addTweet";
-import AllTweets from "./../AllTweets/allTweets";
 
 describe("HomePage", () => {
   let wrapper;
