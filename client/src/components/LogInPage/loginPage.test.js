@@ -19,7 +19,7 @@ describe("LogInPage", () => {
   });
 
   it("should render a <button />", () => {
-    expect(wrapper.find("button").length).toEqual(1);
+    expect(wrapper.find("button").length).toEqual(2);
   });
 
   it("should render a <h1 />", () => {

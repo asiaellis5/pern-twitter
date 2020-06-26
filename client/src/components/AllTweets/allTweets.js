@@ -48,8 +48,7 @@ const AllTweets = (props) => {
                     (user) => user.user_id === tweet.user_fk_id
                   )[0].username
                 }</h4>
-                <h4 className="card-title">{tweet.description}</h4>
-                <p className="card-text">{}</p>
+                <h4 className="card-text">{tweet.description}</h4>
                 <EditTweet tweet={tweet} setRender={props.setRender} />
                 <button
                   className="btn btn-danger m-1"

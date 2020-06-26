@@ -37,7 +37,7 @@ const AddTweet = (props) => {
           <input
             type="text"
             id="add-tweet"
-            className="form-control"
+            className="form"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />

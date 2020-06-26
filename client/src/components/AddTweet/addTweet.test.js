@@ -21,9 +21,9 @@ describe("AddTweet", () => {
 
   it("adds a tweet via the online form", () => {
     const eventObj = { target: { value: "test tweet" } };
-    expect(wrapper.find("input.form-control").props().value).toBe("");
-    wrapper.find("input.form-control").simulate("change", eventObj);
-    expect(wrapper.find("input.form-control").props().value).toBe("test tweet");
+    expect(wrapper.find("input.form").props().value).toBe("");
+    wrapper.find("input.form").simulate("change", eventObj);
+    expect(wrapper.find("input.form").props().value).toBe("test tweet");
   });
 });
 

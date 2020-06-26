@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import auth from './../../auth'
 import Alert from 'react-bootstrap/Alert'
+import { Link } from "react-router-dom";
 
 const LogInPage = (props) => {
   const [username, setUsername] = useState("");
@@ -41,14 +42,19 @@ const LogInPage = (props) => {
           Invalid username or password, please check and try again
       </Alert>}
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-        <input type="text" className="form-control" placeholder="Username" onChange={(event) => setUsername(event.target.value)} />
-        <input type="text" className="form-control" placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} />
+        <input type="text" className="" placeholder="Username" onChange={(event) => setUsername(event.target.value)} />
+        <input type="text" className="" placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} />
         <button
-          className="btn btn-success"
+          className="btn btn-outline-success"
         >
           Log In
       </button>
       </form>
+      <center>
+        <Link to="/signup">
+          <button className="btn btn-outline-success m-3">Dont have an account, click here to sign up</button>
+        </Link>
+      </center>
     </div>
   );
 };
