@@ -34,7 +34,7 @@ app.post("/tweets/:id", async (req, res) => {
 
 // get tweets
 
-app.get("/tweets/", async (req, res) => {
+app.get("/tweets", async (req, res) => {
   try {
     const allTweets = await pool.query("SELECT * FROM tweets;");
 

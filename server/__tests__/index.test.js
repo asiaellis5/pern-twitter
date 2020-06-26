@@ -3,13 +3,20 @@ const supertest = require("supertest");
 const request = supertest(app);
 const pool = require("./../test_db.js");
 
+// beforeAll(() => {
+//   pool.query(
+//     "INSERT INTO Users (email,username,password) VALUES ('email@example.com', 'test', 'password')"
+//   );
+// });
+
 afterAll(() => {
   pool.query("TRUNCATE TABLE tweets;");
 });
 
-it("posts to /tweets", async (done) => {
+it("posts to /tweets/1", async (done) => {
+
   const res = await request
-    .post("/tweets")
+    .post("/tweets/1")
     .send({ description: "test tweet" })
 
     .then((response) => {
@@ -32,7 +39,7 @@ it("gets from /tweets", async (done) => {
 
 it("gets a single tweet from /tweets", async (done) => {
   const addTweet = await request
-    .post("/tweets")
+    .post("/tweets/1")
     .send({ description: "Another test tweet" });
   const tweets = await request.get("/tweets").then((response) => {
     return response.body[1].tweet_id;
@@ -88,3 +95,4 @@ it("deletes a tweets from /tweets/:id", async (done) => {
   });
   done();
 });
+
