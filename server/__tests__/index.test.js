@@ -7,11 +7,11 @@ const pool = require("./../test_db.js");
 
 describe("posts", () => {
 
-  // beforeAll(() => {
-  //   pool.query(
-  //     "INSERT INTO Users (user_id, email,username,password) VALUES (1, 'email@example.com', 'test', 'password')"
-  //   );
-  // });
+  beforeAll(() => {
+    pool.query(
+      "INSERT INTO Users (user_id, email,username,password) VALUES (1, 'email@example.com', 'test', 'password')"
+    );
+  });
 
   afterAll(() => {
     pool.query("TRUNCATE TABLE tweets;");
@@ -103,8 +103,25 @@ describe("posts", () => {
 })
 
 describe("users", () => {
-  afterAll(() => {
-    pool.query("DELETE FROM Users WHERE userid > 0;");
+  beforeAll(() => {
+    pool.query("DELETE FROM users WHERE user_id > 0;");
+  });
+
+  it("posts to /users", async (done) => {
+
+    const res = await request
+      .post("/users")
+      .send({
+        email: "test@test.com",
+        username: "username",
+        password: "password"
+      })
+
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.username).toBe("username");
+      });
+    done();
   });
 
   it("gets the users", async (done) => {
