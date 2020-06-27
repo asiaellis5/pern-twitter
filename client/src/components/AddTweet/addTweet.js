@@ -37,8 +37,8 @@ const AddTweet = (props) => {
           <input
             type="text"
             id="add-tweet"
-            className="form w-50"
-            placeholder="     whats happening?"
+            className="form w-50 h-1000000"
+            placeholder="Whats happening?"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
