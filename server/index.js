@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bcrypt = require('bcrypt')
 const port = process.env.NODE_ENV == "test" ? 5001 : 5000;
 let pool;
 

@@ -25,7 +25,7 @@ const EditTweet = (props) => {
     <div className="edit-container">
       <button
         type="button"
-        className="btn btn-outline-warning"
+        className="btn btn-sm btn-outline-dark"
         data-toggle="modal"
         data-target={`#id${props.tweet.tweet_id}`}
       >

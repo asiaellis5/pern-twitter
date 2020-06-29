@@ -69,11 +69,11 @@ const SignUpPage = (props) => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button className="btn btn-success" >Sign up</button>
+        <button className="btn btn-outline-primary" >Sign up</button>
       </form>
       <center>
         <Link to="/login">
-          <button className="btn btn-outline-success m-3">Already have an account, click here to log in</button>
+          <button className="btn btn-outline-primary m-3">Already have an account, click here to log in</button>
         </Link>
       </center>
     </div>

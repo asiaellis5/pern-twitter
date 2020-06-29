@@ -45,14 +45,14 @@ const LogInPage = (props) => {
         <input type="text" className="" placeholder="Username" onChange={(event) => setUsername(event.target.value)} />
         <input type="text" className="" placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)} />
         <button
-          className="btn btn-outline-success"
+          className="btn btn-outline-primary"
         >
           Log In
       </button>
       </form>
       <center>
         <Link to="/signup">
-          <button className="btn btn-outline-success m-3">Dont have an account, click here to sign up</button>
+          <button className="btn btn-outline-primary m-3">Dont have an account, click here to sign up</button>
         </Link>
       </center>
     </div>

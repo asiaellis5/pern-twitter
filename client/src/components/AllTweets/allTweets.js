@@ -51,7 +51,7 @@ const AllTweets = (props) => {
                 <h4 className="card-text">{tweet.description}</h4>
                 <EditTweet tweet={tweet} setRender={props.setRender} />
                 <button
-                  className="btn btn-outline-danger m-1"
+                  className="btn btn-sm btn-outline-danger m-1"
                   onClick={() => deleteTweet(tweet.tweet_id)}
                 >
                   Delete
