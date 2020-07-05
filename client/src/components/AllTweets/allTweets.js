@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import EditTweet from "./../EditTweet/editTweet";
 import NewsArticles from './../news/news'
+import Alert from 'react-bootstrap/Alert'
 
 const AllTweets = (props) => {
   const [tweets, setTweets] = useState([]);
+  const [error, setError] = useState(false)
 
   const getUserId = () => {
     return props.users.filter(user => user.username === props.username)[0].user_id
@@ -19,6 +21,8 @@ const AllTweets = (props) => {
       } catch (error) {
         console.error(error.message);
       }
+    } else {
+      setError(true)
     }
   };
   const getTweets = async () => {
@@ -47,6 +51,10 @@ const AllTweets = (props) => {
         <div className="all-tweets-container">
 
           <h1>Tweets</h1>
+          {error &&
+            <Alert variant={"danger"}>
+              Not your tweet!
+      </Alert>}
 
           {tweets.reverse().map((tweet) => (
             <div className="card" key={tweet.tweet_id}>
