@@ -31,7 +31,6 @@ const AddTweet = (props) => {
   return (
     <div className="addTweet-Container">
       <center>
-        <h1>Add Tweet</h1>
         <br></br>
         <form className="d-flex" onSubmit={onSubmitForm}>
           <input

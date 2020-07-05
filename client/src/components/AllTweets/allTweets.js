@@ -1,26 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
 import EditTweet from "./../EditTweet/editTweet";
+import NewsArticles from './../news/news'
 
 const AllTweets = (props) => {
   const [tweets, setTweets] = useState([]);
 
-  console.log(props.users)
+  const getUserId = () => {
+    return props.users.filter(user => user.username === props.username)[0].user_id
+  }
 
-  const deleteTweet = async (id) => {
-    try {
-      const deleteTweet = await fetch(`http://localhost:5000/tweets/${id}`, {
-        method: "DELETE",
-      });
-      setTweets(tweets.filter((tweet) => tweet.tweet_id !== id));
-    } catch (error) {
-      console.error(error.message);
+  const deleteTweet = async (id, userId) => {
+    if (getUserId() === userId) {
+      try {
+        const deleteTweet = await fetch(`http://localhost:5000/tweets/${id}`, {
+          method: "DELETE",
+        });
+        setTweets(tweets.filter((tweet) => tweet.tweet_id !== id));
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   const getTweets = async () => {
     try {
       const response = await fetch("http://localhost:5000/tweets");
       const jsonData = await response.json();
-      setTweets(jsonData.reverse());
+      setTweets(jsonData);
       props.setRender(false)
     } catch (error) {
       console.error(error.message);
@@ -32,6 +37,9 @@ const AllTweets = (props) => {
   useEffect(() => {
     getTweets();
   }, [props.render]);
+
+  console.log(props.users)
+
 
   return (
     <div>
@@ -52,7 +60,7 @@ const AllTweets = (props) => {
                 <EditTweet tweet={tweet} setRender={props.setRender} />
                 <button
                   className="btn btn-sm btn-outline-danger m-1"
-                  onClick={() => deleteTweet(tweet.tweet_id)}
+                  onClick={() => deleteTweet(tweet.tweet_id, tweet.user_fk_id)}
                 >
                   Delete
             </button>
@@ -61,6 +69,9 @@ const AllTweets = (props) => {
           ))}
         </div>
       </center>
+      <div>
+        <NewsArticles />
+      </div>
     </div >
   );
 };
