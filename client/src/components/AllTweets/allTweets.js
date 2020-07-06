@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import EditTweet from "./../EditTweet/editTweet";
-import NewsArticles from './../news/news'
 import Alert from 'react-bootstrap/Alert'
 
 const AllTweets = (props) => {
@@ -78,7 +77,6 @@ const AllTweets = (props) => {
         </div>
       </center>
       <div>
-        <NewsArticles />
       </div>
     </div >
   );
