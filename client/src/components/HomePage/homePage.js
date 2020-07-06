@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddTweet from "./../AddTweet/addTweet";
 import AllTweets from "./../AllTweets/allTweets";
+import Alert from 'react-bootstrap/Alert'
 
 const HomePage = (props) => {
   const [users, setUsers] = useState("")
@@ -24,6 +25,7 @@ const HomePage = (props) => {
     <div>
       {users &&
         <div id="homepage-container">
+          <center><Alert variant={"success"}>Welcome to Chitter {props.username}</Alert></center>
 
           <AddTweet setRender={setRender} auth={props.auth} username={props.username} users={users} />
           <br></br>

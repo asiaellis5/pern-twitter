@@ -48,7 +48,7 @@ const AllTweets = (props) => {
     <div>
       <center>
         <div className="all-tweets-container">
-          <Alert variant={"success"}>Welcome to Chitter {props.username}</Alert>
+
 
           <h1>Tweets</h1>
           {error &&
