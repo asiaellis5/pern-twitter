@@ -65,7 +65,7 @@ const AllTweets = (props) => {
                   )[0].username
                 }</h4>
                 <h4 className="card-text">{tweet.description}</h4>
-                <EditTweet tweet={tweet} setRender={props.setRender} />
+                <EditTweet tweet={tweet} setRender={props.setRender} userId={getUserId()} tweetUserId={tweet.user_fk_id} />
                 <button
                   className="btn btn-sm btn-outline-danger m-1"
                   onClick={() => deleteTweet(tweet.tweet_id, tweet.user_fk_id)}
