@@ -48,12 +48,14 @@ const AllTweets = (props) => {
     <div>
       <center>
         <div className="all-tweets-container">
+          <Alert variant={"success"}>Welcome to Chitter {props.username}</Alert>
 
           <h1>Tweets</h1>
           {error &&
             <Alert variant={"danger"}>
               Not your tweet!
-      </Alert>}
+      </Alert>
+          }
 
           {tweets.reverse().map((tweet) => (
             <div className="card" key={tweet.tweet_id}>
